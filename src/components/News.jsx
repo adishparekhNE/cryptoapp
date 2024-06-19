@@ -3,6 +3,7 @@ import { Select, Typography, Row, Col, Avatar, Card } from "antd";
 import moment from "moment";
 import { useFetchCryptoNewsMutation } from "../services/cryptoNewsAPi";
 import { useGetCryptosQuery } from "../services/cryptoAPI";
+import Loader from "./Loader";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -32,7 +33,7 @@ const News = ({ simplified }) => {
     fetchData();
   }, [count, newsCategory, fetchCryptoNews]);
 
-  if (!cryptoNews?.news && !data) return "Loading...";
+  if (!cryptoNews?.news && !data) return <Loader />;
 
   return (
     <Row gutter={[24, 24]}>
